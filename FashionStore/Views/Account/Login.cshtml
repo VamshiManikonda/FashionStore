@@ -1,0 +1,40 @@
+﻿@model FashionStore.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="login">
+
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <h3>Login</h3>
+            @using (Html.BeginForm("LoginUser", "Account", FormMethod.Post))
+            {
+                <fieldset>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.UserName, new { @placeHolder = "User Name", Class = "form-control" })
+                        @Html.ValidationMessageFor(u => u.UserName)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Password, new { @placeHolder = "Password", @type = "password", Class = "form-control" })
+                        @Html.ValidationMessageFor(u => u.Password)
+                    </div>
+                    <div class="form-group">
+                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                        {
+                            <label class="label label-danger">@ViewBag.ErrorMessage</label>
+                        }
+                    </div>
+                    <input type="submit" value="Login">
+                </fieldset>                
+            }
+        </div>
+        <div class="forg">
+            <a href="@Url.Action("Reset","Account")" class="forg-left">Forgot Password</a>
+            <a href="@Url.Action("Register","Account")" class="forg-right">Register</a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

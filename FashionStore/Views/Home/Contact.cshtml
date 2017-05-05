@@ -1,0 +1,41 @@
+﻿@model FashionStore.Models.HomeDashboard
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="contact">
+    <div class="container">
+        <h3>Contact Us</h3>
+        <div class="col-md-3 col-sm-3 contact-left">
+            <div class="address">
+                <h4>ADDRESS</h4>
+                <h5>701 Don Mills Road,</h5>
+                <h5>Toronto, Ontario, Canada.</h5>
+            </div>
+            <div class="phone">
+                <h4>PHONE</h4>
+                <h5>+1 (647)-829-7770</h5>
+            </div>
+            <div class="email">
+                <h4>EMAIL</h4>
+                <h5><a href="mailto:fashionstorecustomercare@gmail.com">info@fashionstore.com</a></h5>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 contact-right">
+            <form action="#" method="post">
+                <input type="text" name="your name" placeholder="Your name" required=" ">
+                <input type="text" name="your email" placeholder="Your email" required=" ">
+                <input type="text" name="your subject" placeholder="Your subject" required=" ">
+                <input type="text" name="your phone number" placeholder="Phone number" required=" ">
+                <textarea name="your message" placeholder="Your message" required=" "></textarea>
+                <input type="submit" value="Send message">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="map-w3ls">
+    <iframe src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJPbL6q1XM1IkRBzXRLEJdpTU&key=AIzaSyA5VG0X2Q6DNW_D_2HuEXR1f3GjCcx3cho" allowfullscreen></iframe>
+</div>
+

@@ -1,0 +1,15 @@
+﻿@media print {
+    body {
+        font-family: Arial;
+        font-size: 1em;
+        color:black;
+    }
+
+   thead {display: table-header-group;}
+   table{
+       border-collapse:collapse;
+       page-break-after:always;
+   }
+    table:last-child { page-break-after:auto; }
+}
+  

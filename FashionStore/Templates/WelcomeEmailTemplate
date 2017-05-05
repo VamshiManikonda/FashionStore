@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset='utf-8' />
+    <title>
+        Welcome to Fashion Store
+    </title>
+    <style type="text/css">
+      
+        @font-face {
+            font-family: 'FuturaStd-Book';
+            src: url('{GlobalURL}/Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.eot');
+            src: url('{GlobalURL}/Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.eot#iefix') format('embedded-opentype'), url('{GlobalURL}/Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.woff') format('woff'), url('{GlobalURL}/Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.ttf') format('truetype'), url('{GlobalURL}/Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.svg#svgFontName') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+ 
+        body {
+            font-family: 'FuturaStd-Book';
+            font-size: 14pt;
+            padding-left: 12px;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div style='width: 700px; padding: 25px;'>
+        <div>Dear {USERNAME},</div>
+        <div><p>Thank you for registering with Fashion Store. Please find below for your credentials:</p></div>
+        <ol>
+          {DETAILS}
+        </ol>
+        <div style="padding-bottom:10px;">For any enquiry, please do not hesitate to contact our Call Centre on +16478297770, or message our dedicated customer care account on Twitter (@FashionStore).</div><br/><br/>
+        <div><img src="{IMAGE}" width="250" alt="log"/></div> <br/><br/>
+		<div style="font-size:7pt;">© 2017 Fashion Store Inc., All Rights Reserved </div>
+		<div style="font-size:7pt;">*This is an auto generated email. Please do not reply.</div>
+    </div>
+</body>
+</html>

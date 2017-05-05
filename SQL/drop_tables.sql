@@ -1,0 +1,10 @@
+DROP TABLE xxfs_customer CASCADE CONSTRAINTS;
+DROP SEQUENCE xxfs_customer_seq;
+DROP TABLE xxfs_product CASCADE CONSTRAINTS;
+DROP SEQUENCE xxfs_prod_id_seq;
+DROP TABLE xxfs_order CASCADE CONSTRAINTS;
+DROP SEQUENCE xxfs_order_seq;
+DROP TABLE xxfs_order_item CASCADE CONSTRAINTS;
+DROP SEQUENCE xxfs_order_item_seq;
+
+COMMIT;

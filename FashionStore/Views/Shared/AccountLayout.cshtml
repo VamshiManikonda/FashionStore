@@ -1,0 +1,65 @@
+﻿@using FashionStore.Code;
+
+@{
+    ViewBag.Title = "AccountLayout";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<br/>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+           @* <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-inverse sidebar" role="navigation">
+                        <div class="sidebar-nav navbar-collapse">
+                            <ul class="nav" id="side-menu">
+                                <li>
+                                   @* <a href="@Url.Action("Dashboard", "Account")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("MyOrder", "Account")"><i class="fa fa-dashboard fa-fw"></i> My Orders</a>
+                                </li>
+                                @if (Constants.Application.AdminUser)
+                                {
+                                    <li id="administration">
+                                        <a href="#"><i class="fa fa-phone fa-fw"></i> Adminstration<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="@Url.Action("ProductManager", "Account")">Product Management</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("OrderManager", "Account")">Order Management</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                         /.sidebar-collapse
+                    </div>
+                </nav>*@
+            <div class="list-group">
+                @*<a href="@Url.Action("Dashboard", "Account")" class="list-group-item"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>*@
+                <a href="@Url.Action("MyOrder", "Account")" class="list-group-item"><i class="fa fa-bitbucket fa-fw"></i> My Orders</a>
+                @if (Constants.Application.AdminUser)
+                {
+                    <a href="@Url.Action("Inventory", "Account")" class="list-group-item"><i class="fa fa-database fa-fw"></i> Inventory</a>
+                   <a href="@Url.Action("OrderManager", "Account")" class="list-group-item"><i class="fa fa-bitbucket-square fa-fw"></i> Order Management</a>
+                }
+                <a href="@Url.Action("Reset", "Account")" class="list-group-item"><i class="fa fa-unlock fa-fw"></i> Change Password</a>
+                <a href="@Url.Action("Logout", "Account")" class="list-group-item"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

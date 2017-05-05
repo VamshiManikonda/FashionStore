@@ -1,0 +1,108 @@
+﻿@model FashionStore.Models.Product
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close" onclick="$('body').removeClass('modal-open'); $('#divEditProduct').dialog('close');"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modelHeader"></h4>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm("SaveProduct", "Account"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div class="form-group">
+                        @Html.HiddenFor(x => x.ProductId)
+                        @Html.LabelFor(x => x.ProductName):
+                        @Html.TextBoxFor(x => x.ProductName, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ProductName)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Description):
+                        @Html.TextAreaFor(x => x.Description, new { Class = "form-control", @rows = "3" })
+                        @Html.ValidationMessageFor(x => x.Description)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Type):
+                        @Html.DropDownListFor(x => x.Type, Model.Types, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Type)
+                    </div>                    
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Image):
+                        @Html.TextBoxFor(x => x.Image, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Image)
+                        <div class="form-group">
+                            <div id="divDropFile">
+                                <input type="file" name="filePicker" id="filePicker" />
+                                <label class="label label-danger" id="ImageDocument"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Quantity):
+                        @Html.TextBoxFor(x => x.Quantity, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Quantity)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Price):
+                        @Html.TextBoxFor(x => x.Price, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Price)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Active):
+                        @Html.CheckBoxFor(x => x.Active, new { Class = "form-control", @style = "pull-right" })
+                        @Html.ValidationMessageFor(x => x.Active)
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <input type="button" value="Cancel" width="200" data-dismiss="modal" class="btn btn-success" onclick="$('body').removeClass('modal-open'); $('#divEditProduct').dialog('close');" />
+                            <input id="btnSubmit" type="submit" value="Submit" width="200" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#filePicker').on('change', function (e) {
+                var files = e.target.files;
+                if (files.length > 0) {
+                    if (window.FormData !== undefined) {
+                        var data = new FormData();
+                        for (var x = 0; x < files.length; x++) {
+                            data.append("file" + x, files[x]);
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("UploadFile", "Account")',
+                            contentType: false,
+                            processData: false,
+                            data: data,
+                            success: function (result) {
+                                if (result != "false") {
+                                    $("#Image").val("");
+                                    $("#Image").val(result);
+                                } else {
+                                    alert("Error in uploading document");
+                                }
+                            },
+                            error: function (xhr, status, p3, p4) {
+                                var err = "Error " + " " + status + " " + p3 + " " + p4;
+                                if (xhr.responseText && xhr.responseText[0] == "{")
+                                    err = JSON.parse(xhr.responseText).Message;
+                                alert(err);
+                            }
+                        });
+                    } else {
+                        alert("This browser doesn't support HTML5 file uploads!");
+                    }
+                }
+            });
+            $("#btnSubmit").on("click", function () {
+                $(this).submit();
+            });
+        });
+    </script>
+</div>

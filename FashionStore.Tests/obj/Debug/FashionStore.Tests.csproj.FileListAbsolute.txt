@@ -1,0 +1,1 @@
+C:\files\ASP_project\project\FashionStore\FashionStore.Tests\obj\Debug\FashionStore.Tests.csprojResolveAssemblyReference.cache

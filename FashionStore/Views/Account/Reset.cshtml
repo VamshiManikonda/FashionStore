@@ -1,0 +1,55 @@
+﻿@model FashionStore.Models.Login
+
+@{
+    ViewBag.Title = "Reset";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="login">
+
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <h3>Reset</h3>
+            @using (Html.BeginForm("ResetPassword", "Account", FormMethod.Post))
+            {
+                <fieldset>   
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.UserName, new { @placeHolder = "User Name", Class = "form-control" })
+                        @Html.ValidationMessageFor(u => u.UserName)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.Password, new { @placeHolder = "Password", @type = "password", Class = "form-control" })
+                        @Html.ValidationMessageFor(u => u.Password)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(x => x.ConfirmPassword, new { @placeHolder = "Confirm Password", @type = "password", Class = "form-control" })
+                        @Html.ValidationMessageFor(u => u.ConfirmPassword)
+                        @Html.LabelFor(x => x.Message, new { @class = "label label-danger", @id = "idValidation", @style = "display: none" })
+                    </div>
+                    <div class="form-group">
+                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                        {
+                            <label class="label label-danger">@ViewBag.ErrorMessage</label>
+                        }
+                    </div>
+                    <input type="submit" value="Reset">
+                </fieldset>                
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ConfirmPassword").focusout(function () {
+            if ($("#Password").val() != $("#ConfirmPassword").val()) {
+                $("#Message").val("Password does not match.");
+                $("#idValidation").show();
+                $("#ConfirmPassword").val("");
+            }
+            else {
+                $("#Message").val("");
+                $("#idValidation").hide();
+            }
+        });
+    });
+</script>

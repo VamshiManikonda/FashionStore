@@ -1,0 +1,11 @@
+
+@font-face {
+  font-family: 'FuturaStd-Bold';
+  src: url('FuturaStd-Bold.eot'); /* IE9 Compat Modes */
+  src: url('FuturaStd-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('FuturaStd-Bold.woff') format('woff'), /* Modern Browsers */
+       url('FuturaStd-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('FuturaStd-Bold.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

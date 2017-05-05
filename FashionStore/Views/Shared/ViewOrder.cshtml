@@ -1,0 +1,190 @@
+﻿@model FashionStore.Models.Order
+<style type="text/css">
+    .modal-dialog {
+        width: 90% !important;
+        height: 60% !important;
+        font-size: 1em;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close" onclick="$('body').removeClass('modal-open'); $('#divViewOrder').dialog('close');"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modelHeader"></h4>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm("GetOrder", "Order"))
+            {
+                if (Model.OrderCarts != null && Model.OrderCarts.Count > 0)
+                {
+                    var grid = new WebGrid(Model.OrderCarts, rowsPerPage: 100000, canPage: false, canSort: false);
+                    <div id="divCartItems" style="width:auto">
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix" style="color:darkgreen">
+                                    <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-shopping-cart fa-fw"></span> Cart Items</h3>
+                             </div>
+                            <div class="panel-body" style="overflow-y:auto">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @grid.GetHtml(
+                          tableStyle: "table table-striped table-bordered table-hover dataTable no-footer, cell-border",
+                                htmlAttributes: new { id = "grid" },
+                                mode: WebGridPagerModes.All,
+                                columns:
+                                grid.Columns(
+            grid.Column(columnName: "CartId", header: "Cart Id", style: "col-lg-offset-1", format: @<text>@item.CartId</text>),
+            grid.Column(columnName: "ProductName", header: "Product Name", style: "col-lg-offset-1", format: @<text>@item.ProductName</text>),
+            grid.Column(columnName: "Price", header: "Price", style: "col-lg-offset-1", format: @<text>$ @item.Price</text>),
+            grid.Column(columnName: "ItemQuantity", header: "Quantity", style: "col-lg-offset-1", format: @<text>@item.Quantity</text>),
+            grid.Column(columnName: "TotalPrice", header: "Total Price", style: "col-lg-offset-1", format: @<text>$ @item.TotalPrice</text>)))
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Sub Total
+                                    <span class="pull-right text-danger">
+                                        <em>$ @Model.SubTotal</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Shipping
+                                    <span class="pull-right text-danger">
+                                        <em>Free</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Total
+                                    <span class="pull-right text-danger">
+                                        <em>$ @Model.Total</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="panel-heading clearfix" style="color:darkgreen">
+                        <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-plane fa-fw"></span> Shipping Details</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    First Name
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.FirstName</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Last Name
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.LastName</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Address
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.Address</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    City
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.City</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    State / Province
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.State</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Country
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.Country</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Zip code
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.ZipCode</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Email
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.Email</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Phone
+                                    <span class="pull-right text-danger">
+                                        <em>@Model.Phone</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <input type="button" value="Close" width="200" data-dismiss="modal" class="btn btn-success" onclick="$('body').removeClass('modal-open'); $('#divViewOrder').dialog('close');" />
+                        </div>
+                    </div>
+                }}
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+        });
+    </script>
+</div>
+

@@ -1,0 +1,298 @@
+﻿@using FashionStore.Code;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Fashion Store</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/fontawesome/font-awesome.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/fontawesome/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/flexslider.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/dataTables.bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-multiselect.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+    <!-- font -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //font -->
+    <script src="@Url.Content("~/Scripts/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Scripts/easyResponsiveTabs.js")"></script>
+    <script src="@Url.Content("~/Scripts/imagezoom.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.flexslider.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.flexisel.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.wmuSlider.js")"></script>
+    <script src="@Url.Content("~/Scripts/Administration.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-migrate-1.2.1.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/moment.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-multiselect.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/dataTables.bootstrap.min.js")"></script>
+
+</head>
+<body>
+    <div class="header-top-w3layouts">
+        <div class="container">
+            <div class="col-md-6 logo-w3">
+                <a href="@Url.Action("Index","Home")"><img src="@Url.Content("~/Images/logo2.png")" alt=" " /><h1>FASHION<span>STORE</span></h1></a>
+            </div>
+            <div class="col-md-6 phone-w3l">
+                @* <ul>
+                        <li><span class="fa fa-phone" aria-hidden="true"></span></li>
+                        <li>+1 (647)-829-7770</li>
+                    </ul>*@
+            </div>
+            <div class="col-sm-6">
+                <div class="pull-right">
+                    <ul class="nav nav-pills">
+                        @* <li><a href="#"><i class="fa fa-phone"></i> +1 (647)-829-7770</a></li>
+                            <li><a href="mailto:fashionstorecustomercare@gmail.com"><i class="fa fa-envelope"></i> info@fashionstore.com</a></li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="header-middle">
+        <!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="social-icons pull-left">
+                        <ul class="nav navbar-nav">
+                            @*<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="shop-menu pull-right">
+                        <ul class="nav navbar-nav">
+                            @*<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>*@
+                            @*<li><a href="@Url.Action("CheckOut","Home")"><i class="fa fa-crosshairs"></i> Checkout</a></li>*@
+                            <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                            <li><a href="@Url.Action("Cart","Order")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            @if (Constants.Application.User == null)
+                            {
+                                <li><a href="@Url.Action("Login","Account")"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="@Url.Action("Register","Account")"><i class="fa fa-user"></i> Register</a></li>
+                            }
+                            else
+                            {
+                                @*<li><a href="#"><i class="fa fa-user"></i> @Constants.Application.User.FirstName</a></li>*@
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-user fa-fw"></i><label>@Constants.Application.User.FirstName</label>  <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            @* <a href="@Url.Action("Dashboard","Account")"><i class="fa fa-briefcase fa-fw"></i> My Account</a>*@
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("MyOrder","Account")"><i class="fa fa-bitbucket fa-fw"></i> My Orders</a>
+                                        </li>
+                                        @if (Constants.Application.AdminUser)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Inventory","Account")"><i class="fa fa-database fa-fw"></i> Inventory</a>
+                                            </li>
+                                            <li>
+                                                @* <a href="@Url.Action("OrderManager","Account")"><i class="fa fa-bitbucket-square fa-fw"></i> Order Management</a>*@
+                                            </li>
+                                        }
+                                        <li>
+                                            <a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.dropdown-user -->
+                                </li>
+                                <!-- /.dropdown -->
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-middle-->
+    <div class="header-bottom-w3ls">
+        <div class="container">
+            <div class="col-md-7 navigation-agileits">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav ">
+                            <li><a href="@Url.Action("Index","Home")" class="hyper "><span>Home</span></a></li>
+                            <li class="dropdown ">
+                                <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Shop<b class="caret"></b></span></a>
+                                <ul class="dropdown-menu multi">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+
+                                                <li><a href="@Url.Action("Women","Shop")"><i class="fa fa-angle-right" aria-hidden="true"></i>Women's Wear</a></li>
+                                                <li><a href="@Url.Action("Men","Shop")"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's Wear</a></li>
+                                                @*<li><a href="@Url.Action("Kid","Shop")"> <i class="fa fa-angle-right" aria-hidden="true"></i>Kid's Wear</a></li>*@
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-6 w3l">
+                                            <a href="@Url.Action("Women","Shop")"><img src="@Url.Content("~/Images/girl1.jpg")" class="img-responsive" alt=""></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("About","Home")" class="hyper"><span>About Us</span></a></li>
+                            <li><a href="@Url.Action("Contact","Home")" class="hyper"><span>Contact Us</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    $(".dropdown").hover(
+                        function () {
+                            $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                            $(this).toggleClass('open');
+                        },
+                        function () {
+                            $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                            $(this).toggleClass('open');
+                        }
+                    );
+                });
+            </script>
+            <div class="col-md-4 search-agileinfo">
+                <form action="#" method="post">
+                    <input type="search" name="Search" placeholder="Search for a Product..." required="">
+                    <button type="submit" class="btn btn-default search" aria-label="Left Align">
+                        <i class="fa fa-search" aria-hidden="true"> </i>
+                    </button>
+                </form>
+            </div>
+            @*<div class="col-md-4 cart-wthree">
+                    <div class="cart">
+                        <form action="#" method="post" class="last">
+                            <input type="hidden" name="cmd" value="_cart" />
+                            <input type="hidden" name="display" value="1" />
+                            <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>*@
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <!-- newsletter -->
+    @* <div class="newsletter">
+            <div class="container">
+                <div class="col-md-6 w3agile_newsletter_left">
+                    <h3>Newsletter</h3>
+                    <p>It only takes a second to be the first to find out about our latest news and promotions.</p>
+                </div>
+                <div class="col-md-6 w3agile_newsletter_right">
+                    <form action="#" method="post">
+                        <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                        <input type="submit" value="Subscribe" />
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>*@
+    <!-- //newsletter -->
+    @*<div class="footer">
+        <div class="container">
+            <div class="col-md-3 footer-grids fgd1">
+                @*<a href="@Url.Action("Index","Home")"><img src="@Url.Content("~/Images/logo2.png")" alt=" " /><h3>FASHION<span>STORE</span></h3></a>
+                <ul>
+                    <li>701 Don Mills Road,</li>
+                    <li>Toronto.</li>
+                    <li><a href="mailto:fashionstorecustomercare@gmail.com">info@fashionstore.com</a></li>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grids fgd2">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="@Url.Action("About", "Home")">About</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                    @*<li><a href="@Url.Action("Faq", "Home")">FAQ's</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grids fgd3">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="@Url.Action("Women","Shop")">Women's Wear</a></li>
+                    <li><a href="@Url.Action("Men","Shop")">Men's Wear</a></li>
+                    <li><a href="@Url.Action("Kid","Shop")">Kid's Wear</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grids fgd4">
+                <h4>My Account</h4>
+                <ul>
+
+                    <li><a href="@Url.Action("Login","Account")">Login</a></li>
+                    <li><a href="@Url.Action("Register","Account")">Register</a></li>
+                </ul>
+            </div>*@
+    <div class="clearfix"></div>
+    <div class="footer">
+        <div class="container">
+            <p class="copy-right">© 2017 Fashion Store Inc., All rights reserved.</a></p>
+        </div>
+    </div>
+    <!-- cart-js -->
+    @*<script src="@Url.Content("~/Scripts/minicart.js")"></script>
+        <script>
+            w3ls1.render();
+
+            w3ls1.cart.on('w3sb1_checkout', function (evt) {
+                var items, len, i;
+
+                if (this.subtotal() > 0) {
+                    items = this.items();
+
+                    for (i = 0, len = items.length; i < len; i++) {
+                        items[i].set('shipping', 0);
+                        items[i].set('shipping2', 0);
+                    }
+                }
+            });
+        </script>*@
+    <!-- //cart-js -->
+</body>
+</html>

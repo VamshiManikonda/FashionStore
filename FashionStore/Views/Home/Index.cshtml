@@ -1,0 +1,898 @@
+﻿@model FashionStore.Models.HomeDashboard
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="banner-agile">
+    <div class="container">
+        <h2>WELCOME TO</h2>
+        <h3>FASHION <span>STORE</span></h3>
+        <p>Shop the latest in denims, tops, bottoms & dresses for women and shirts, tees, jeans & trousers for men. </p>
+        <a href="@Url.Action("About","Home")">Read More</a>
+    </div>
+</div>
+@*<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <div class="col-md-5 bb-grids bb-left-agileits-w3layouts">
+            <a href="@Url.Action("Women","Shop")">
+                <div class="bb-left-agileits-w3layouts-inner">
+                    <h3>SALE</h3>
+                    <h4>upto<span>75%</span></h4>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 bb-grids bb-right-agileits-w3layouts">
+            <a href="@Url.Action("Men","Shop")">
+                <div class="bb-right-top">
+                    <h3>SALE</h3>
+                    <h4>upto<span>50%</span></h4>
+                </div>
+            </a>
+            <a href="@Url.Action("Women","Shop")">
+                <div class="bb-right-bottom">
+                    <h3>SALE</h3>
+                    <h4>upto<span>60%</span></h4>
+                </div>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>*@
+@*<div class="top-products">
+    <div class="container">
+        <h3>Top Products</h3>
+        <div class="sap_tabs">
+            <div id="horizontalTab">
+                <ul class="resp-tabs-list">
+                    <li class="resp-tab-item"><span>Men</span></li>
+                    <li class="resp-tab-item"><span>Women</span></li>
+                    @*<li class="resp-tab-item"><span>Kid</span></li>
+                    @*<li class="resp-tab-item"><span>Cosmetics</span></li>
+                </ul>
+                <div class="clearfix"> </div>
+                <div class="resp-tabs-container">
+                    <div class="tab-1 resp-tab-content">
+                        @if (Model.TopMenProducts != null && Model.TopMenProducts.Count > 0)
+                        {
+                            for (var i = 0; i < 4; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    var itm = Model.TopMenProducts[i];
+                                    var url = "~/Images/" + @itm.Image;
+                                    <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                        <a href="@Url.Action("Product","Shop", new { @productId = @itm.ProductId })">
+                                            <div class="product-img">
+                                                <img src="@Url.Content(url)" alt="" />
+                                                <div class="p-mask">
+                                                    @using (Html.BeginForm("AddToCart", "Shop", new { @productId = @itm.ProductId }, FormMethod.Post))
+                                                    {
+                                                        @*<input type="hidden" name="cmd" value="_cart" />
+                                                            <input type="hidden" name="add" value="1" />
+                                                            <input type="hidden" name="w3ls1_item" value="@itm.ProductName" />
+                                                            <input type="hidden" name="amount" value="@itm.Price" />
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>@itm.ProductName</h4>
+                                        <h5>$@itm.Price</h5>
+                                    </div>
+                                }
+                                else if (i < Model.TopMenProducts.Count)
+                                {
+                                    var itm = Model.TopMenProducts[i];
+                                    var url = "~/Images/" + @itm.Image;
+                                    <div class="col-md-3 top-product-grids tp2">
+                                        <a href="@Url.Action("Product","Shop", new { @productId = @itm.ProductId })">
+                                            <div class="product-img">
+                                                <img src="@Url.Content(url)" alt="" />
+                                                <div class="p-mask">
+                                                    @using (Html.BeginForm("AddToCart", "Shop", new { @productId = @itm.ProductId }, FormMethod.Post))
+                                                    {
+                                                        @*<input type="hidden" name="cmd" value="_cart" />
+                                                            <input type="hidden" name="add" value="1" />
+                                                            <input type="hidden" name="w3ls1_item" value="@itm.ProductName" />
+                                                            <input type="hidden" name="amount" value="@itm.Price" />
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>@itm.ProductName</h4>
+                                        <h5>$@itm.Price</h5>
+                                    </div>
+                                }
+                            }
+                        }
+                        <div class="clearfix"></div>*@
+                        @*<div class="top-products-set2">
+                                <div class="col-md-3 top-product-grids tp5">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/ip2.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Inner wear" />
+                                                    <input type="hidden" name="amount" value="50.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Inner wear</h4>
+                                    <h5>$50.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp6">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/shp8.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Shoes" />
+                                                    <input type="hidden" name="amount" value="150.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Shoes</h4>
+                                    <h5>$150.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp7">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/cap1.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Formal shirt" />
+                                                    <input type="hidden" name="amount" value="100.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Formal shirt</h4>
+                                    <h5>$100.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp4">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/wap3.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Watch" />
+                                                    <input type="hidden" name="amount" value="200.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Watch</h4>
+                                    <h5>$200.00</h5>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>*@
+                    <div class="tab-1 resp-tab-content">
+                        @if (Model.TopWomenProducts != null && Model.TopWomenProducts.Count > 0)
+                        {
+                            for (var i = 0; i < 4; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    var itm = Model.TopWomenProducts[i];
+                                    var url = "~/Images/" + @itm.Image;
+                                    <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                        <a href="@Url.Action("Product","Shop", new { @productId = @itm.ProductId })">
+                                            <div class="product-img">
+                                                <img src="@Url.Content(url)" alt="" />
+                                                <div class="p-mask">
+                                                    @using (Html.BeginForm("AddToCart", "Shop", new { @productId = @itm.ProductId }, FormMethod.Post))
+                                                    {
+                                                        @*<input type="hidden" name="cmd" value="_cart" />
+                                                            <input type="hidden" name="add" value="1" />
+                                                            <input type="hidden" name="w3ls1_item" value="@itm.ProductName" />
+                                                            <input type="hidden" name="amount" value="@itm.Price" />*@
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>@itm.ProductName</h4>
+                                        <h5>$@itm.Price</h5>
+                                    </div>
+                                }
+                                else if(i < Model.TopWomenProducts.Count)
+                                {
+                                    var itm = Model.TopWomenProducts[i];
+                                    var url = "~/Images/" + @itm.Image;
+                                    <div class="col-md-3 top-product-grids tp2">
+                                        <a href="@Url.Action("Product","Shop", new { @productId = @itm.ProductId })">
+                                            <div class="product-img">
+                                                <img src="@Url.Content(url)" alt="" />
+                                                <div class="p-mask">
+                                                    @using (Html.BeginForm("AddToCart", "Shop", new { @productId = @itm.ProductId }, FormMethod.Post))
+                                                    {
+                                                        @*<input type="hidden" name="cmd" value="_cart" />
+                                                            <input type="hidden" name="add" value="1" />
+                                                            <input type="hidden" name="w3ls1_item" value="@itm.ProductName" />
+                                                            <input type="hidden" name="amount" value="@itm.Price" />*@
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>@itm.ProductName</h4>
+                                        <h5>$@itm.Price</h5>
+                                    </div>
+                                }
+                            }
+                        }
+                        <div class="clearfix"></div>
+                        @*<div class="top-products-set2">
+                                <div class="col-md-3 top-product-grids tp4">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/wp8.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Casual wear" />
+                                                    <input type="hidden" name="amount" value="250.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Casual wear</h4>
+                                    <h5>$250.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp4">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/wp5.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Casual wear" />
+                                                    <input type="hidden" name="amount" value="250.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Casual wear</h4>
+                                    <h5>$250.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp4">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/wp4.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Casual wear" />
+                                                    <input type="hidden" name="amount" value="350.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Casual wear</h4>
+                                    <h5>$350.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp4">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/wp3.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Casual wear" />
+                                                    <input type="hidden" name="amount" value="200.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Casual wear</h4>
+                                    <h5>$200.00</h5>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>*@
+                    </div>
+                    @*<div class="tab-1 resp-tab-content">
+                            <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                <a href="single.html">
+                                    <div class="product-img">
+                                        <img src="images/tp9.jpg" alt="" />
+                                        <div class="p-mask">
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                <input type="hidden" name="amount" value="90.00" />
+                                                <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <h4>Handbag</h4>
+                                <h5>$90.00</h5>
+                            </div>
+                            <div class="col-md-3 top-product-grids tp2">
+                                <a href="single.html">
+                                    <div class="product-img">
+                                        <img src="images/tp10.jpg" alt="" />
+                                        <div class="p-mask">
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                <input type="hidden" name="amount" value="60.00" />
+                                                <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <h4>Handbag</h4>
+                                <h5>$60.00</h5>
+                            </div>
+                            <div class="col-md-3 top-product-grids tp3">
+                                <a href="single.html">
+                                    <div class="product-img">
+                                        <img src="images/tp11.jpg" alt="" />
+                                        <div class="p-mask">
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                <input type="hidden" name="amount" value="120.00" />
+                                                <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <h4>Handbag</h4>
+                                <h5>$120.00</h5>
+                            </div>
+                            <div class="col-md-3 top-product-grids tp4">
+                                <a href="single.html">
+                                    <div class="product-img">
+                                        <img src="images/tp12.jpg" alt="" />
+                                        <div class="p-mask">
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                <input type="hidden" name="amount" value="70.00" />
+                                                <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                <h4>Handbag</h4>
+                                <h5>$70.00</h5>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="top-products-set2">
+                                <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/hp9.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                    <input type="hidden" name="amount" value="290.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Handbag</h4>
+                                    <h5>$290.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/hp8.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                    <input type="hidden" name="amount" value="50.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Handbag</h4>
+                                    <h5>$50.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/hp7.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                    <input type="hidden" name="amount" value="70.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Handbag</h4>
+                                    <h5>$70.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/hp3.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Handbag" />
+                                                    <input type="hidden" name="amount" value="190.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Handbag</h4>
+                                    <h5>$190.00</h5>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="tab-1 resp-tab-content">
+                                <div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/tp13.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Eye makeup" />
+                                                    <input type="hidden" name="amount" value="90.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Eye makeup</h4>
+                                    <h5>$90.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp2">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/tp14.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Gold makeup" />
+                                                    <input type="hidden" name="amount" value="60.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Gold makeup</h4>
+                                    <h5>$60.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp3">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/tp15.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Tya Makeup kit" />
+                                                    <input type="hidden" name="amount" value="120.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Tya Makeup kit</h4>
+                                    <h5>$120.00</h5>
+                                </div>
+                                <div class="col-md-3 top-product-grids tp4">
+                                    <a href="single.html">
+                                        <div class="product-img">
+                                            <img src="images/tp16.jpg" alt="" />
+                                            <div class="p-mask">
+                                                <form action="#" method="post">
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls1_item" value="Vega Brushes" />
+                                                    <input type="hidden" name="amount" value="60.00" />
+                                                    <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                    <h4>Vega Brushes</h4>
+                                    <h5>$60.00</h5>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="top-products-set2">
+                                    <div class="col-md-3 top-product-grids tp4">
+                                        <a href="single.html">
+                                            <div class="product-img">
+                                                <img src="images/cp5.jpg" alt="" />
+                                                <div class="p-mask">
+                                                    <form action="#" method="post">
+                                                        <input type="hidden" name="cmd" value="_cart" />
+                                                        <input type="hidden" name="add" value="1" />
+                                                        <input type="hidden" name="w3ls1_item" value="Vega Brushes" />
+                                                        <input type="hidden" name="amount" value="60.00" />
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>Lipstick</h4>
+                                        <h5>$60.00</h5>
+                                    </div>
+                                    <div class="col-md-3 top-product-grids tp4">
+                                        <a href="single.html">
+                                            <div class="product-img">
+                                                <img src="images/cp4.jpg" alt="" />
+                                                <div class="p-mask">
+                                                    <form action="#" method="post">
+                                                        <input type="hidden" name="cmd" value="_cart" />
+                                                        <input type="hidden" name="add" value="1" />
+                                                        <input type="hidden" name="w3ls1_item" value="Vega Brushes" />
+                                                        <input type="hidden" name="amount" value="60.00" />
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>Eye liner</h4>
+                                        <h5>$60.00</h5>
+                                    </div>
+                                    <div class="col-md-3 top-product-grids tp4">
+                                        <a href="single.html">
+                                            <div class="product-img">
+                                                <img src="images/cp7.jpg" alt="" />
+                                                <div class="p-mask">
+                                                    <form action="#" method="post">
+                                                        <input type="hidden" name="cmd" value="_cart" />
+                                                        <input type="hidden" name="add" value="1" />
+                                                        <input type="hidden" name="w3ls1_item" value="Eye shades" />
+                                                        <input type="hidden" name="amount" value="60.00" />
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>Eye shades</h4>
+                                        <h5>$60.00</h5>
+                                    </div>
+                                    <div class="col-md-3 top-product-grids tp4">
+                                        <a href="single.html">
+                                            <div class="product-img">
+                                                <img src="images/cp8.jpg" alt="" />
+                                                <div class="p-mask">
+                                                    <form action="#" method="post">
+                                                        <input type="hidden" name="cmd" value="_cart" />
+                                                        <input type="hidden" name="add" value="1" />
+                                                        <input type="hidden" name="w3ls1_item" value="Eye shades" />
+                                                        <input type="hidden" name="amount" value="160.00" />
+                                                        <button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star yellow-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                        <h4>Eye shades</h4>
+                                        <h5>$160.00</h5>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- top-brands -->
+@*<div class="top-brands">
+    <div class="container">
+        <h3>Top Brands</h3>
+        <div class="sliderfig">
+            <ul id="flexiselDemo1">
+                <li>
+                    <img src="@Url.Content("~/Images/4.png")" alt=" " class="img-responsive" />
+                </li>
+                <li>
+                    <img src="@Url.Content("~/Images/5.png")" alt=" " class="img-responsive" />
+                </li>
+                <li>
+                    <img src="@Url.Content("~/Images/6.png")" alt=" " class="img-responsive" />
+                </li>
+                <li>
+                    <img src="@Url.Content("~/Images/7.png")" alt=" " class="img-responsive" />
+                </li>
+                <li>
+                    <img src="@Url.Content("~/Images/8.jpg")" alt=" " class="img-responsive" />
+                </li>
+            </ul>
+        </div>*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#flexiselDemo1").flexisel({
+                    visibleItems: 4,
+                    animationSpeed: 1000,
+                    autoPlay: false,
+                    autoPlaySpeed: 3000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+            });
+        </script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.flexisel.js")"></script>
+    </div>
+</div>
+<!-- //top-brands -->
+<script src="@Url.Content("~/Scripts/easyResponsiveTabs.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+</script>
+<div class="fandt">
+    <div class="container">
+        <div class="col-md-6 features">
+            <h3>Our Services</h3>
+            <div class="support">
+                <div class="col-md-2 ficon hvr-rectangle-out">
+                    <i class="fa fa-user " aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10 ftext">
+                    <h4>24/7 online free support</h4>
+                    <p>Strong support team to support your network 24/7 365 days proactively.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="shipping">
+                <div class="col-md-2 ficon hvr-rectangle-out">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10 ftext">
+                    <h4>Free shipping</h4>
+                    <p>Free Shipping with no minimum value on orders.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="money-back">
+                <div class="col-md-2 ficon hvr-rectangle-out">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10 ftext">
+                    <h4>100% money back</h4>
+                    <p>Easy cancellation and refund on orders.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        @*<div class="col-md-6 testimonials">
+           <div class="test-inner">
+                <div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="wmuSliderWrapper">
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <img src="@Url.Content("~/Images/c1.png")" alt=" " class="img-responsive" />
+                                <p>I am a Prime customer who order items regularly on <a href="@Url.Action("Index","Home")">Fashion Store</a>. I truly appreciate the quick response and effort to solve problems and concerns I have had with items and shipping. I have not experienced other online companies that are as accommodating.</p>
+                                <h4># Andrew</h4>
+                            </div>
+                        </article>
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <img src="@Url.Content("~/Images/c2.png")" alt=" " class="img-responsive" />
+                                <p>I am a Prime customer who order items regularly on <a href="@Url.Action("Index","Home")">Fashion Store</a>. I truly appreciate the quick response and effort to solve problems and concerns I have had with items and shipping. I have not experienced other online companies that are as accommodating.</p>
+                                <h4># Lucy</h4>
+                            </div>
+                        </article>
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <img src="@Url.Content("~/Images/c3.png")" alt=" " class="img-responsive" />
+                                <p>I am a Prime customer who order items regularly on <a href="@Url.Action("Index","Home")">Fashion Store</a>. I truly appreciate the quick response and effort to solve problems and concerns I have had with items and shipping. I have not experienced other online companies that are as accommodating.</p>
+                                <h4># Martina</h4>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        *@</div>
+        <div class="clearfix"></div>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery.wmuSlider.js")"></script>
+    <script>
+        $('.example1').wmuSlider();
+    </script>
+</div>

@@ -1,0 +1,14 @@
+﻿ .productName {
+    width: 50%;
+}
+
+.location {
+    width: 25%;
+}
+.quantity {
+    width: 25%;
+}
+
+th{
+    text-align:center!important;
+}

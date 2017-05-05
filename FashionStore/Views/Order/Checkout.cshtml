@@ -1,0 +1,331 @@
+﻿@model FashionStore.Models.Order
+    @using FashionStore.Code
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div id="body">
+    <div style="width:98%; margin-left:auto;margin-right:auto">
+        <br />
+        @using (Html.BeginForm("Confirm", "Order", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-heading clearfix" style="color:darkgreen">
+                                <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-crosshairs fa-fw"></span> Checkout</h3>
+                            </div>
+                        </div>
+                       <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#divAccount"><i class="fa fa-briefcase fa-fw"></i>Step 1: Account & Billing Details</a>
+                                        </h4>
+                                    </div>
+                                    <div id="divAccount" class="panel-collapse collapse out">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            First Name
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.FirstName</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            Last Name
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.LastName</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            Address
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.Address</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            City
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.City</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            State / Province
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.State</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            Country
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.Country</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            Zip code
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.ZipCode</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            Email
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.Email</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="list-group">
+                                                        <a href="#" class="list-group-item">
+                                                            Phone
+                                                            <span class="pull-right text-danger">
+                                                                <em>@Constants.Application.User.Phone</em>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               @* <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#divShipping"><i class="fa fa-plane fa-fw"></i>Step 2: Shipping Details</a>
+                                        </h4>
+                                    </div>
+                                    <div id="divShipping" class="panel-collapse collapse out">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.FirstName):
+                                                            @Html.TextBoxFor(x => x.FirstName, new { Class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.LastName):<br />
+                                                            @Html.TextBoxFor(x => x.LastName, new { Class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.Email):<br />
+                                                            @Html.TextBoxFor(x => x.Email, new { Class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.Phone):
+                                                            @Html.TextBoxFor(x => x.Phone, new { Class = "form-control" })
+                                                            @Html.ValidationMessageFor(x => x.Phone)
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.Address):
+                                                            @Html.TextBoxFor(x => x.Address, new { Class = "form-control" })
+                                                            @Html.ValidationMessageFor(x => x.Address)
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.City):
+                                                            @Html.TextBoxFor(x => x.City, new { Class = "form-control" })
+                                                            @Html.ValidationMessageFor(x => x.City)
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.State):
+                                                            @Html.TextBoxFor(x => x.State, new { Class = "form-control" })
+                                                            @Html.ValidationMessageFor(x => x.State)
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.Country):
+                                                            @Html.TextBoxFor(x => x.Country, new { Class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(x => x.ZipCode):
+                                                            @Html.TextBoxFor(x => x.ZipCode, new { Class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                @*<div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#divPayment"><i class="fa fa-cc-paypal fa-fw"></i> Step 3: Payment Details</a>
+                                        </h4>
+                                    </div>
+                                    <div id="divPayment" class="panel-collapse collapse out">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <h4>Please select the preferred payment method to use on this order.</h4>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        @Html.RadioButtonFor(x => x.Cash, new { Class = "form-control" })
+                                                        @Html.LabelFor(x => x.Cash)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        @Html.RadioButtonFor(x => x.Paypal, new { Class = "form-control " })
+                                                        @Html.LabelFor(x => x.Paypal)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#divConfirm"><i class="fa fa-crosshairs fa-fw"></i> Step 2: Confirm Details</a>
+                                        </h4>
+                                    </div>
+                                    <div id="divConfirm" class="panel-collapse collapse out">
+                                        <div class="panel-body">
+                                            @if (Model.OrderCarts != null && Model.OrderCarts.Count > 0)
+                                            {
+                                                var grid = new WebGrid(Model.OrderCarts, rowsPerPage: 100000, canPage: false, canSort: false);
+                                                <div id="divCartItems" style="width:auto">
+
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body" style="overflow-y:auto">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    @grid.GetHtml(
+                          tableStyle: "table table-striped table-bordered table-hover dataTable no-footer, cell-border",
+                                htmlAttributes: new { id = "grid" },
+                                mode: WebGridPagerModes.All,
+                                columns:
+                                grid.Columns(
+            grid.Column(columnName: "ProductName", header: "Product Name", style: "col-lg-offset-1", format: @<text>@item.ProductName</text>),
+            grid.Column(columnName: "Price", header: "Price", style: "col-lg-offset-1", format: @<text>$ @item.Price</text>),
+            grid.Column(columnName: "ItemQuantity", header: "Quantity", style: "col-lg-offset-1", format: @<text>@item.Quantity</text>),
+            grid.Column(columnName: "TotalPrice", header: "Total Price", style: "col-lg-offset-1", format: @<text>$ @item.TotalPrice</text>)))
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <br /><br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="list-group">
+                                                            <a href="#" class="list-group-item">
+                                                                Sub Total
+                                                                <span class="pull-right text-danger">
+                                                                    <em>$ @Model.SubTotal</em>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="list-group">
+                                                            <a href="#" class="list-group-item">
+                                                                Shipping
+                                                                <span class="pull-right text-danger">
+                                                                    <em>Free</em>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="list-group">
+                                                            <a href="#" class="list-group-item">
+                                                                Total
+                                                                <span class="pull-right text-danger">
+                                                                    <em>$ @Model.Total</em>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="checkbox">
+                                                        <label class="text-danger" style="margin-left:5px;">
+                                                            <input type="checkbox" id="chkAgree" checked="checked" />  I have read, understood and accept Fashion Store’s terms and conditions. Charges and payments
+                                                            in connection with cancellation of the product prior to any minimum term may apply.(See Fashion Store General terms and Conditions For Customer Services)
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="pull-right">
+                                                        <button type="submit" style="float:right" class="btn btn-success"><span style="margin-right: 5px" class="fa fa-crosshairs fa-fw"></span> Confirm Order</button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }        
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#grid').DataTable();
+    });
+</script>
+
+

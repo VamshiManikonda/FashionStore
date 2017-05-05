@@ -1,0 +1,128 @@
+﻿@model FashionStore.Models.Login
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<br /><br />
+<div id="container">
+    <div class="col-md-10 col-sm-10 contact-left">
+        <h2>Register</h2>
+        <br /><br />
+        @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
+            {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-user-md" aria-hidden="true"></i> @Html.LabelFor(x => x.FirstName):
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.FirstName)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-user-md" aria-hidden="true"></i> @Html.LabelFor(x => x.LastName):
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.LastName)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-envelope" aria-hidden="true"></i> @Html.LabelFor(x => x.Email):
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-user" aria-hidden="true"></i> @Html.LabelFor(x => x.UserName):
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.UserName)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-lock" aria-hidden="true"></i> @Html.LabelFor(x => x.Password):
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-lock" aria-hidden="true"></i> @Html.LabelFor(x => x.ConfirmPassword):
+                        @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                        @Html.LabelFor(x => x.Message, new { @class = "label label-danger", @id = "idValidation", @style = "display: none" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> @Html.LabelFor(x => x.Address):
+                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Address)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> @Html.LabelFor(x => x.City):
+                        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.City)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> @Html.LabelFor(x => x.State):
+                        @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.State)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> @Html.LabelFor(x => x.Country):
+                        @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Country)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <i class="fa fa-phone" aria-hidden="true"></i> @Html.LabelFor(x => x.Phone):
+                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Phone)
+                    </div>
+                    <div class="form-group">
+                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                        {
+                            <label class="label label-danger">@ViewBag.ErrorMessage</label>
+                        }
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Register" class="form-control pull-right" style="width:10%;background: #00e58b;" />
+            <div class="clearfix"></div>
+        }
+    </div>
+</div>
+<div class="clearfix"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ConfirmPassword").focusout(function () {
+            if ($("#Password").val() != $("#ConfirmPassword").val()) {
+                $("#Message").val("Password does not match.");
+                $("#idValidation").show();
+                $("#ConfirmPassword").val("");
+            }
+            else {
+                $("#Message").val("");
+                $("#idValidation").hide();
+            }
+        });
+    });
+</script>
+<br /><br /><br /><br />
+

@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+
+    <title>
+        Bill Payments
+    </title>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Opificio';
+            src: url('http://localhost:58567//Fonts/opificio/opificio/Opificio.eot');
+            src: url('http://localhost:58567//Fonts/opificio/opificio/Opificio.eot#iefix') format('embedded-opentype'), url('http://localhost:58567//Fonts/opificio/opificio/Opificio.woff') format('woff'), url('http://localhost:58567//Fonts/opificio/opificio/Opificio.ttf') format('truetype'), url('http://localhost:58567//Fonts/opificio/opificio/Opificio.svgF#svgFontName') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'Opificio_Bold';
+            src: url('http://localhost:58567//Fonts/opificio_bold/opificio_bold/Opificio_Bold.eot');
+            src: url('http://localhost:58567//Fonts/opificio_bold/opificio_bold/Opificio_Bold.eot#iefix') format('embedded-opentype'), url('http://localhost:58567//Fonts/opificio_bold/opificio_bold/Opificio_Bold.woff') format('woff'), url('http://localhost:58567//Fonts/opificio_bold/opificio_bold/Opificio_Bold.ttf') format('truetype'), url('http://localhost:58567//Fonts/opificio_bold/opificio_bold/Opificio_Bold.svg#svgFontName') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+
+        @font-face {
+            font-family: 'FuturaStd-Book';
+            src: url('http://localhost:58567//Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.eot');
+            src: url('http://localhost:58567//Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.eot#iefix') format('embedded-opentype'), url('http://localhost:58567//Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.woff') format('woff'), url('http://localhost:58567//Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.ttf') format('truetype'), url('http://localhost:58567//Fonts/Futura_Std_Book/Futura_Std_Book/FuturaStd-Book.svg#svgFontName') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+
+        @font-face {
+            font-family: 'FuturaStd-Bold';
+            src: url('http://localhost:58567//Fonts/Futura_Std_Bold/Futura_Std_Bold/FuturaStd-Bold.eot');
+            src: url('http://localhost:58567//Fonts/Futura_Std_Bold/Futura_Std_Bold/FuturaStd-Bold.eot#iefix') format('embedded-opentype'), url('http://localhost:58567//Fonts/Futura_Std_Bold/Futura_Std_Bold/FuturaStd-Bold.woff') format('woff'), url('http://localhost:58567//Fonts/Futura_Std_Bold/Futura_Std_Bold/FuturaStd-Bold.ttf') format('truetype'), url('http://localhost:58567//Fonts/Futura_Std_Bold/Futura_Std_Bold/FuturaStd-Bold.svg#svgFontName') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'FuturaStd-Light';
+            src: url('http://localhost:58567//Fonts/Futura_Std_Light/Futura_Std_Light/FuturaStd-Light.eot');
+            src: url('http://localhost:58567//Fonts/Futura_Std_Light/Futura_Std_Light/FuturaStd-Light.eot#iefix') format('embedded-opentype'), url('http://localhost:58567//Fonts/Futura_Std_Light/Futura_Std_Light/FuturaStd-Light.woff') format('woff'), url('http://localhost:58567//Fonts/Futura_Std_Light/Futura_Std_Light/FuturaStd-Light.ttf') format('truetype'), url('http://localhost:58567//Fonts/Futura_Std_Light/Futura_Std_Light/FuturaStd-Light.svg#svgFontName') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .maindev {
+            margin: 10px 10px 10px 10px;
+            width: 1480px;
+            height: 2080px;
+        }
+
+
+        .spacer {
+            width: 100%;
+            height: 50px;
+        }
+
+        .fullwidth {
+            width: 100%;
+            margin-top: -15px;
+            margin-bottom: -21px;
+        }
+
+        .halfwidth {
+            width: 50%;
+        }
+
+        .quaterwidth {
+            width: 35%;
+            background-image: url('http://localhost:58567//images/diamond_big.png');
+            background-repeat: repeat;
+        }
+
+        .logotd {
+            /* vertical-align: top; */
+            width: 30%;
+            /* text-align: center; */
+            background-color: white;
+            padding: 2px 10px 10px 10px;
+            margin: 5px 5px 5px 5px;
+        }
+
+        .logo {
+            text-align: right;
+            vertical-align: top;
+            background-color: white;
+        }
+
+        .section {
+            background-color: white;
+            padding-top: 15px;
+        }
+
+        .payment {
+            width: 33%;
+            float: right;
+            margin-right: 100px;
+        }
+
+        .borderdiv {
+            border-width: 3pt;
+            border-color: #EDEDED;
+            border-style: solid;
+            border-radius: 20px;
+        }
+
+        .table1 {
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+
+
+
+
+        .table2td {
+            width: 25%;
+            color: #000000;
+            font-size: 18pt;
+            font-family: 'FuturaStd-Book';
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .backgrounddiv {
+            border-radius: 20px;
+            background-color: #EDEDED;
+        }
+
+        .paddingtable {
+            width: 100%;
+            padding-left: 30px;
+            padding-top: 8px;
+        }
+
+
+
+        .innertable {
+            width: 98%;
+            padding: 1px 20px 10px 20px;
+            font-size: 12pt !important;
+            margin-left: auto;
+            margin-right: auto;
+             font-family: 'FuturaStd-Book';
+        }
+
+        .innertabletd {
+            width: 33%;
+            vertical-align: top;
+            border: 3pt solid #FFFFFF;
+            border-radius: 20px;
+        }
+
+        .normalcolor {
+            color: #000000;
+        }
+
+        th {
+            font-size: 18pt;
+        }
+
+        td {
+            font-size: 16pt;
+        }
+
+        tr {
+            border-bottom: 3pt solid #FFFFFF;
+        }
+
+        .normalfont {
+            font-family: 'FuturaStd-Book';
+            font-size: 16pt;
+        }
+
+        .smallfont {
+            font-family: 'FuturaStd-Book';
+            font-size: 16pt;
+        }
+
+
+
+        .servicenumberfont {
+            font-family: 'FuturaStd-Light';
+            font-size: 22pt;
+        }
+
+        .servicepadding {
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+
+
+        .dev1 {
+            margin: 45px 90px 0px 90px;
+            padding: 10px 10px 45px 25px;
+            background-color: white !important;
+        }
+
+        .sign {
+            width: 75%;
+            text-align: center;
+            border-width: 3pt;
+            border-color: #EDEDED;
+            border-style: solid;
+            border-radius: 20px;
+        }
+
+        .card {
+            width: 100%;
+            text-align: center;
+            border-width: 3pt;
+            border-color: #EDEDED;
+            border-style: solid;
+            border-radius: 20px;
+        }
+
+        .customertable {
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 30px;
+            padding-bottom: 5px;
+        }
+        /*New Styles*/
+
+        .headertext {
+            width: 400px;
+            background-color: white;
+            font-family: 'Opificio_Bold';
+            font-size: 48pt;
+            color: #575756;
+        }
+
+        .fontbold {
+            font-family: 'FuturaStd-Bold';
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        .fontnormal {
+            font-family: 'FuturaStd-Book';
+            font-size: 16pt;
+        }
+
+        .customername {
+            width: 50%;
+            text-align: left;
+            font-family: 'FuturaStd-Book';
+            font-size: 30pt;
+            color: #575756;
+        }
+
+        .customerfontbold {
+            font-family: 'FuturaStd-Bold';
+            font-size: 20pt;
+            font-weight: bold;
+        }
+
+        .customerfontnormal {
+            font-family: 'FuturaStd-Book';
+            font-size: 20pt;
+        }
+
+        .branchtd {
+            font-family: 'FuturaStd-Light';
+            font-size: 20pt;
+            width: 50%;
+            text-align: right;
+            color: #575756;
+        }
+
+        .serviceheader {
+            width: 100%;
+            text-align: left;
+            font-family: 'FuturaStd-Bold';
+            font-size: 18pt;
+            color: #575756;
+            font-weight: bold;
+        }
+
+        .serviceColor {
+            color: #ed1c24;
+        }
+
+        .smallerfont {
+            font-family: 'FuturaStd-Book';
+            font-size: 14pt;
+        }
+
+        .tariffname {
+            font-family: 'FuturaStd-Bold';
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        .info {
+            font-family: 'FuturaStd-Book';
+            font-size: 16pt;
+            color: #000000;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+
+        .lightname {
+            font-family: 'FuturaStd-Light';
+            font-size: 16pt;
+            width: 50%;
+            text-align: right;
+            color: #575756;
+        }
+
+        .minWidth {
+            width: 1%;
+        }
+
+        .maxWidth {
+            width: 100%;
+        }
+
+        .nowarp {
+            white-space: nowrap;
+        }
+
+        .rightAlg {
+            text-align: right;
+        }
+    </style>
+</head>
+<body class="maindev" style="background-image:url('http://localhost:58567//images/diamond_big.png'); background-repeat:repeat">
+    <div>
+        <div class="spacer">
+            &nbsp;
+        </div>
+        <div class="dev1">
+            <!--Header-->
+            <div>
+                <table class="fullwidth">
+                    <tr>
+                        <td class="headertext">Your bill</td>
+                        <td class="quaterwidth"></td>
+                        <td class="logotd">
+                            <table>
+                                <tr style="height:85%;">
+                                    <td style="background-color: white; margin-top: 0px;padding-right:-85px;">
+                                        <img src="http://localhost:58567//Images/logo.svg" width="480" />
+                                    </td>
+                                </tr>
+                                <tr style="height:25%;">
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--Header End-->
+            <!--Customer Details-->
+            <div class="section">
+                <div class="borderdiv">
+                    <table class="table1">
+                        <tr>
+                            <td class="left">
+                                <span class="customerfontbold">Customer Number:</span> &nbsp;
+                                <span class="customerfontnormal">04828515</span>
+                            </td>
+                            <td class="branchtd">
+                                <span style="font-weight:bold">09 Mar 2016 - Airport HQ2 Branch</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="customertable" cellspacing="2">
+                        <tr>
+                            <td class="left">
+                                <span class="customerfontbold">Receipt Number:</span> &nbsp;
+                                <span class="customerfontnormal">4532055</span>
+                            </td>
+                            <td class="right">
+                                <span class="customerfontbold">Processed By:</span> &nbsp;
+                                <span class="customerfontnormal">SANTHOSH</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--Customer Details End-->
+            <div class="section">
+                <div class="backgrounddiv">
+                    <table class="innertable" cellspacing="10">
+                        <thead>
+                            <tr><th style="width: 20%">Account Number</th><th style="width: 10%; text-align: right">Service Number</th><th style="width: 10%; text-align: right; ">Payment</th><th style="width: 10%; text-align: right; ">Remaining Balance</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style='width: 20%;text-align: center'><span>1000952856</span></td><td style='width: 10%; text-align: right'><span>55870758</span></td><td style='width: 10%; text-align: right; '><span>100.00</span></td><td style='width: 10%; text-align: right;'><span>.00</span></td></tr>
+                            <tr><td style='width: 20%;text-align: center'><span>1001178676</span></td><td style='width: 10%; text-align: right'><span>66130361  44670420</span></td><td style='width: 10%; text-align: right; '><span>100.00</span></td><td style='width: 10%; text-align: right;'><span>.00</span></td></tr>
+                            <tr><td style='width: 20%;text-align: center'><span>1001920463</span></td><td style='width: 10%; text-align: right'><span></span></td><td style='width: 10%; text-align: right; '><span>100.00</span></td><td style='width: 10%; text-align: right;'><span>.00</span></td></tr>
+                            <tr><td style='width: 20%;text-align: center'><span>1003747223</span></td><td style='width: 10%; text-align: right'><span>66191955</span></td><td style='width: 10%; text-align: right; '><span>100.00</span></td><td style='width: 10%; text-align: right;'><span>.00</span></td></tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="spacer" style="background-color:white">
+                &nbsp;
+            </div>
+            <div class="section payment">
+                <div class="borderdiv">
+                    <table class="innertable" cellspacing="10">
+                        <tr>
+                            <td class="normalcolor minWidth">
+                                <span class="normalfont nowarp">Method:</span>
+                            </td>
+                            <td class="maxWidth rightAlg">
+                                <span class="normalfont">Qtel - Cash</span>
+                            </td>
+                        </tr>
+                        <tr style="display:none">
+                            <td class="normalcolor minWidth">
+                                <span class="normalfont nowarp">Bank:</span>
+                            </td>
+                            <td class="maxWidth rightAlg">
+                                <span class="normalfont">{BANK}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="normalcolor minWidth">
+                                <span class="fontbold serviceColor nowarp">Total:</span>
+                            </td>
+                            <td class="maxWidth rightAlg">
+                                <span class="fontbold serviceColor">QR 400.00</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

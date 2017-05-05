@@ -1,0 +1,66 @@
+﻿@model FashionStore.Models.Inventory
+@using FashionStore.Code;
+
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Shared/AccountLayout.cshtml";
+}
+
+<div class="body">
+    <div style="width:auto; margin-left:auto;margin-right:auto">
+        @using (Html.BeginForm("Inventory", "Account"))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix" style="color:darkgreen">
+                    <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-database fa-fw"></span>Inventory Details</h3>
+                    <div class="pull-right">
+                        <button type="button" value="Add Product" onclick="Administration.UserManagement.ShowAddEdit('@Url.Action("AddProduct", "Account")',$('#divEditProduct'), 'Add Product')" style="float:right" class="btn btn-success"><span style="margin-right: 5px" class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @if (Model.InventoryProducts != null && Model.InventoryProducts.Count > 0)
+                    {
+                        var grid = new WebGrid(Model.InventoryProducts, rowsPerPage: 10000, canPage: false, canSort: false);
+                        <div class="panel-body" style="overflow-y:auto">
+                            <div id="gridContent" style="padding:20px; ">
+                                @grid.GetHtml(
+                    tableStyle: "table table-striped table-bordered table-hover dataTable no-footer, cell-border",
+                htmlAttributes: new { id = "grid" },
+        mode: WebGridPagerModes.All,
+        columns:
+            grid.Columns(
+            grid.Column(columnName: "ProductName", header: "Product Name", style: "col-md-3", format: @<text>@item.ProductName</text>),
+           @* grid.Column(columnName: "Price", header: "Price", style: "col-md-1 text-center", format: @<text>$ @item.Price</text>),
+            grid.Column(columnName: "Quantity", header: "Quantity", style: "col-md-1 text-center", format: @<text>@item.Quantity</text>),
+            grid.Column(columnName: "StartDate", header: "Start Date", style: "col-md-1 text-center", format: @<text>@item.StartDate</text>),
+            grid.Column(columnName: "Active", header: "Active", style: "col-md-1 text-center", format: @<text>@item.Active</text>),
+            grid.Column(columnName: "Type", header: "Product Type", style: "col-md-2 text-center", format: @<text>@(((ProductType)Enum.Parse(typeof(ProductType), item.Type)).GetDescription())</text>),*@
+            grid.Column(columnName: "ModifyProduct", header: "Modify Product", format: tem => new HtmlString("<a onclick='Administration.UserManagement.ShowAddEdit(\"" + Url.Action("GetProduct", "Account", new { @productId = @tem.ProductId }) + "\",\"#divEditProduct\", \"Modify Product\")' class='btn btn-warning col-lg-offset-1'><span style='margin-right: 5px' class='fa fa-edit fa-fw'></span></a>")),
+            grid.Column(columnName: "DeleteProduct", header: "Delete Product", format: tem => new HtmlString("<a href=\"" + Url.Action("RemoveProduct", "Account", new { @productId = @tem.ProductId }) + "\" class='btn btn-danger col-lg-offset-1'><span style='margin-right: 5px' class='fa fa-close fa-fw'></span></a>"))))
+                            </div>
+
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+        <div id="divEditProduct" title="Add/Edit Product" style="overflow-x:hidden;overflow-y:auto;" class="modal">
+        </div>
+    </div>
+
+    <br />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#grid').DataTable();
+        });
+    </script>
+
+
+
+    <br />
+</div>
+
+
+

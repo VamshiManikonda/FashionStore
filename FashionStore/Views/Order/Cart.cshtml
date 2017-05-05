@@ -1,0 +1,129 @@
+﻿@model FashionStore.Models.Order
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div id="body">
+    <div style="width:98%; margin-left:auto;margin-right:auto">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix" style="color:darkgreen">
+                <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-shopping-cart fa-fw"></span>Cart Review</h3>
+            </div>
+            <div class="panel-body">
+@if (Model.OrderCarts != null && Model.OrderCarts.Count > 0)
+{
+    var grid = new WebGrid(Model.OrderCarts, rowsPerPage: 100000, canPage: false, canSort: false);
+    var count = 0;
+                <div id="divCartItems" style="width:auto">
+                    
+
+                        <div class="panel panel-default">
+                            @*<div class="panel-heading clearfix">
+                                <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-briefcase fa-fw"></span>Cart Items</h3>
+                                <div class="pull-right">
+                                </div>
+                            </div>*@
+                            <div class="panel-body" style="overflow-y:auto">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @grid.GetHtml(
+                          tableStyle: "table table-striped table-bordered table-hover dataTable no-footer, cell-border",
+                                htmlAttributes: new { id = "grid" },
+                                mode: WebGridPagerModes.All,
+                                columns:
+                                grid.Columns(
+            grid.Column(columnName: "ProductImage", header: "Item", format: tem => new HtmlString("<a href=\"" + Url.Action("Product", "Shop", new { @productId = @tem.ProductId }) + "\"><img src=\"" + Url.Content("~/Images/" + @tem.ProductImage + "\"") + "\" alt=\"\" style='width:50%;height:100px;'></a>")),
+            grid.Column(columnName: "ProductName", header: "Product Name", style: "col-lg-offset-1", format: tem => new HtmlString("<a href=\"" + Url.Action("Product", "Shop", new { @productId = @tem.ProductId }) + "\" class='text-danger' style='text-decoration: underline; cursor:pointer'>" + @tem.ProductName + "</a>")),
+            grid.Column(columnName: "Price", header: "Price", style: "col-lg-offset-1", format: @<text>$ @item.Price</text>),
+            grid.Column(columnName: "ItemQuantity", header: "Quantity", style: "col-lg-offset-1", format: @<text>@Html.DropDownList("ItemQuantity", Model.OrderCarts[count].Quantities.Select(u => new SelectListItem { Text = u.Text, Value = u.Value, Selected = u.Value == @item.ItemQuantity }), new { @class = "form-control", @onchange = "updateCart(this);" })</text>),
+            grid.Column(columnName: "TotalPrice", header: "Total Price", style: "col-lg-offset-1", format: @<text>$ @item.TotalPrice</text>),
+            grid.Column(columnName: "RemoveItem", header: "Remove Item", format: tem => new HtmlString("<a href=\"" + Url.Action("RemoveItem", "Order", new { @productId = @tem.ProductId }) + "\" class='btn btn-danger col-lg-offset-1'><span style='margin-right: 5px' class='fa fa-close fa-fw'></span></a>"))))
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                Sub Total
+                                <span class="pull-right text-danger">
+                                    <em>$ @Model.SubTotal</em>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                Shipping
+                                <span class="pull-right text-danger">
+                                    <em>Free</em>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                Total
+                                <span class="pull-right text-danger">
+                                    <em>$ @Model.Total</em>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pull-right">
+                        @using (Html.BeginForm("Checkout", "Order", FormMethod.Post))
+                        {
+                            <button type="submit" style="float:right" class="btn btn-success"><span style="margin-right: 5px" class="fa fa-crosshairs fa-fw"></span> Check Out</button>
+                        }
+                    </div>
+                    <div class="pull-left">
+                        @using (Html.BeginForm("Women", "Shop", FormMethod.Post))
+                        {
+                            <button type="submit" style="float:right" class="btn btn-success"><span style="margin-right: 5px" class="fa fa-shopping-cart fa-fw"></span> Continue Shopping</button>
+                        }
+                    </div>
+                </div>
+}
+else
+{
+    <div class="panel-heading clearfix" style="color:darkgreen">
+        <h3 class="panel-title pull-left">Shopping cart is empty.</h3>
+    </div>
+}
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#grid').DataTable();
+    });
+
+    function updateCart(item) {
+        var url = '@Url.Action("UpdateCart", "Order", new { productName = "-1", quantity = "-2" })';
+        url = url.replace("-1", $(item).closest('tr').find("td:nth-child(2)").text());
+        url = url.replace("-2", $(item).closest('tr').find("td:nth-child(4) option:selected").val());
+        window.location.href = url;
+    }
+</script>
+
+
+
+
+
+
+

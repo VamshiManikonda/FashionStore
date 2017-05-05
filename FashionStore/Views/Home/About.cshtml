@@ -1,0 +1,183 @@
+﻿@model FashionStore.Models.HomeDashboard
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="about">
+    <div class="container">
+        <h3>About Us</h3>
+        <div class="about-info">
+            <div class="col-md-8 about-grids">
+                <h4>Our latest collection</h4>
+                <p>Stay in sync with the latest fashion trends in clothing and look fabulous at all times by shopping at Fashion Store. Whether you wish to revamp your wardrobe, add some basic essentials or indulge in an exciting shopping spree, the collection of clothes at the Fashion online store is sure to cater to your shopping needs. From elegant wear to comfortable clothing wear, you’ll find everything that you would possibly need to pep up your closet. Our wide selection of clothing for men and women is organised by brand, colour, size, material and price, which makes it easy for you to choose an outfit that best suits your style and requirements.</p>
+                <div class="about-w3ls-row">
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $("#flexiselDemo3").flexisel({
+                                visibleItems: 2,
+                                animationSpeed: 1000,
+                                autoPlay: false,
+                                autoPlaySpeed: 3000,
+                                pauseOnHover: true,
+                                enableResponsiveBreakpoints: true,
+                                responsiveBreakpoints: {
+                                    portrait: {
+                                        changePoint: 480,
+                                        visibleItems: 2
+                                    },
+                                    landscape: {
+                                        changePoint: 640,
+                                        visibleItems: 2
+                                    },
+                                    tablet: {
+                                        changePoint: 768,
+                                        visibleItems: 2
+                                    }
+                                }
+                            });
+
+                        });
+                    </script>
+                    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.flexisel.js")"></script>
+                   @* <ul id="flexiselDemo3">
+                        <li>
+                            <img src="@Url.Content("~/Images/pp7.jpg")" class="img-responsive" alt="" />
+                        </li>
+                        <li>
+                            <img src="@Url.Content("~/Images/cap1.jpg")" class="img-responsive" alt="" />
+                        </li>
+                        <li>
+                            <img src="@Url.Content("~/Images/pp5.jpg")" class="img-responsive" alt="" />
+                        </li>
+                        <li>
+                            <img src="@Url.Content("~/Images/pp3.jpg")" class="img-responsive" alt="" />
+                        </li>
+                    </ul>*@
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="col-md-4 about-grids">
+                <h4>Our Advantages</h4>
+                <div class="pince">
+                    <div class="pince-left">
+                        <h5>01</h5>
+                    </div>
+                    <div class="pince-right">
+                        <p>Broader selection of products.</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="pince">
+                    <div class="pince-left">
+                        <h5>02</h5>
+                    </div>
+                    <div class="pince-right">
+                        <p>Superior buying experience.</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="pince">
+                    <div class="pince-left">
+                        <h5>03</h5>
+                    </div>
+                    <div class="pince-right">
+                        <p>On-time delivery of products.</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="pince">
+                    <div class="pince-left">
+                        <h5>04</h5>
+                    </div>
+                    <div class="pince-right">
+                        <p>Quick resolution of any concerns.</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //about -->
+<!-- about-bottom -->
+@*<div class="about-bottom">
+    <div class="container">
+        <h3> Flat <span>50%</span> Off</h3>
+        <h4>On women clothing</h4>
+        <a href="@Url.Action("Women","Shop")">Shop Now</a>
+    </div>
+</div>*@
+<!-- //about-bottom -->
+<!--team-->
+<div class="team" id="team">
+    <div class="container">
+        <h3> Our Team</h3>
+        <div class="team-grids">
+            <div class="col-md-3 team-grid">
+                <div class="team-img">
+                    <img src="@Url.Content("~/Images/IMG_8274.jpg")" class="img-responsive" alt=" " />
+                   @* <figcaption class="overlay">
+                        <div class="social-icon">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </figcaption>*@
+                </div>
+                <h4>Bhavya Evandu</h4>
+                <h5>Managing Director</h5>
+            </div>
+            <div class="col-md-3 team-grid">
+                <div class="team-img">
+                    <img src="@Url.Content("~/Images/t2.jpg")" class="img-responsive" alt=" " />
+                   @* <figcaption class="overlay">
+                        <div class="social-icon">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </figcaption>*@
+                </div>
+                <h4>Jaye Smith</h4>
+                <h5>Lead Developer</h5>
+            </div>
+            <div class="col-md-3 team-grid">
+                <div class="team-img">
+                    <img src="@Url.Content("~/Images/t1.jpg")" class="img-responsive" alt=" " />
+                   @* <figcaption class="overlay">
+                        <div class="social-icon">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </figcaption>*@
+                </div>
+                <h4>Mike Arney</h4>
+                <h5>Fashion Designer</h5>
+            </div>
+            <div class="col-md-3 team-grid">
+                <div class="team-img">
+                    <img src="@Url.Content("~/Images/t4.jpg")" class="img-responsive" alt=" " />
+                   @* <figcaption class="overlay">
+                        <div class="social-icon">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </figcaption>*@
+                </div>
+                <h4>Michele Lampa</h4>
+                <h5>Fashion Designer</h5>
+            </div>
+           @* <div class="clearfix"></div>*@
+        </div>
+    </div>
+</div>
+<!--team-->

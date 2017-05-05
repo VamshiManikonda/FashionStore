@@ -1,0 +1,11 @@
+
+@font-face {
+  font-family: 'Opificio';
+  src: url('Opificio.eot'); /* IE9 Compat Modes */
+  src: url('Opificio.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Opificio.woff') format('woff'), /* Modern Browsers */
+       url('Opificio.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Opificio.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,11 @@
+
+@font-face {
+  font-family: 'FuturaStd-Book';
+  src: url('FuturaStd-Book.eot'); /* IE9 Compat Modes */
+  src: url('FuturaStd-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('FuturaStd-Book.woff') format('woff'), /* Modern Browsers */
+       url('FuturaStd-Book.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('FuturaStd-Book.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

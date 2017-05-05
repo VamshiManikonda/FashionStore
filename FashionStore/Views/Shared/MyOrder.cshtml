@@ -1,0 +1,96 @@
+﻿@model FashionStore.Models.OrderManager
+
+@{
+    ViewBag.Title = "MyOrder";
+    Layout = "~/Views/Shared/AccountLayout.cshtml";
+}
+
+<div class="body">
+    <div style="width:auto; margin-left:auto;margin-right:auto">
+        @using (Html.BeginForm("MyOrder", "Account"))
+        {
+            if (Model.CurrentOrders != null && Model.CurrentOrders.Count > 0)
+                {
+                    var grid = new WebGrid(Model.CurrentOrders, rowsPerPage: 10000, canPage: false, canSort: false);
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix" style="color:darkgreen">
+                        <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-bitbucket fa-fw"></span> Orders In Process</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="panel-body" style="overflow-y:auto">
+                            <div id="gridContent" style="padding:20px; ">
+                                @grid.GetHtml(
+                    tableStyle: "table table-striped table-bordered table-hover dataTable no-footer, cell-border",
+                htmlAttributes: new { id = "grid" },
+        mode: WebGridPagerModes.All,
+        columns:
+            grid.Columns(
+            grid.Column(columnName: "OrderId", header: "Order Id", style: "col-lg-offset-1", format: @<text>@item.OrderId</text>),
+            grid.Column(columnName: "OrderStatus", header: "Order Status", style: "col-lg-offset-1", format: @<text>@item.OrderStatus</text>),
+            grid.Column(columnName: "CreatedDate", header: "Created Date", style: "col-lg-offset-1", format: @<text>@item.CreatedDate</text>),
+            grid.Column(columnName: "Quantity", header: "Items", style: "col-lg-offset-1 text-center", format: @<text>@item.Quantity</text>),
+            grid.Column(columnName: "Total", header: "Amount Paid", style: "col-lg-offset-1", format: @<text>$ @item.Total</text>),
+            grid.Column(columnName: "ViewOrder", header: "Order Details", format: tem => new HtmlString("<a onclick='Administration.UserManagement.ShowAddEdit(\"" + Url.Action("GetOrder", "Order", new { @orderId = @tem.OrderId }) + "\",\"#divViewOrder\", \"Order Details\")' class='text-danger' style='text-decoration: underline; cursor:pointer'>View Details</a>")),
+            grid.Column(columnName: "CancelOrder", header: "Cancel Order", format: tem => new HtmlString("<a href=\"" + Url.Action("CancelOrder", "Order", new { @orderId = @tem.OrderId }) + "\" class='btn btn-danger col-lg-offset-1'><span style='margin-right: 5px' class='fa fa-close fa-fw'></span></a>"))))
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.ProcessedOrders != null && Model.ProcessedOrders.Count > 0)
+            {
+                var grid = new WebGrid(Model.ProcessedOrders, rowsPerPage: 10000, canPage: false, canSort: false);
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix" style="color:darkgreen">
+                        <h3 class="panel-title pull-left"><span style="margin-right: 5px" class="fa fa-bitbucket fa-fw"></span> Order History</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="panel-body" style="overflow-y:auto">
+                            <div id="gridContent" style="padding:20px; ">
+                                @grid.GetHtml(
+                    tableStyle: "table table-striped table-bordered table-hover dataTable no-footer, cell-border",
+                htmlAttributes: new { id = "grid" },
+        mode: WebGridPagerModes.All,
+        columns:
+            grid.Columns(
+            grid.Column(columnName: "OrderId", header: "Order Id", style: "col-lg-offset-1", format: @<text>@item.OrderId</text>),
+            grid.Column(columnName: "OrderStatus", header: "Order Status", style: "col-lg-offset-1", format: @<text>@item.OrderStatus</text>),
+            grid.Column(columnName: "CreatedDate", header: "Created Date", style: "col-lg-offset-1", format: @<text>@item.CreatedDate</text>),
+            grid.Column(columnName: "Quantity", header: "Items", style: "col-lg-offset-1 text-center", format: @<text>@item.Quantity</text>),
+            grid.Column(columnName: "Total", header: "Amount Paid", style: "col-lg-offset-1", format: @<text>$ @item.Total</text>),
+            grid.Column(columnName: "ViewOrder", header: "Order Details", format: tem => new HtmlString("<a onclick='Administration.UserManagement.ShowAddEdit(\"" + Url.Action("GetOrder", "Order", new { @orderId = @tem.OrderId }) + "\",\"#divViewOrder\", \"Order Details\")' class='text-danger' style='text-decoration: underline; cursor:pointer'>View Details</a>"))))
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.CurrentOrders.Count == 0 && Model.ProcessedOrders.Count == 0)
+            {
+                <div class="panel-heading clearfix" style="color:darkgreen">
+                    <h3 class="panel-title pull-left">Your order history is empty. Please place an order.</h3>
+                </div>
+            }
+            
+
+        }
+        <div id="divViewOrder" title="Order Details" style="overflow-x:hidden;overflow-y:auto;" class="modal">
+        </div>
+    </div>
+
+    <br />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#grid').DataTable();
+        });
+    </script>
+
+
+
+    <br />
+</div>
